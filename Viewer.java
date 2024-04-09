@@ -4,7 +4,7 @@
 import javax.swing.JFrame;
 import java.awt.Color; // Import statement for Color
 
-public class ComponentViewer {
+public class Viewer {
     public static void main(String[] args) {
         JFrame appFrame = new JFrame();  // Create a Frame object
         
