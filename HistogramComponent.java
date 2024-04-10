@@ -1,13 +1,14 @@
-import javax.swing.JComponent;
-import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Desktop;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URI;
-import java.awt.event.ActionEvent;
-import java.awt.Desktop;
+
+import javax.swing.JButton;
+import javax.swing.JComponent;
 
 public class HistogramComponent extends JComponent {
     private JButton button_cason;
@@ -26,6 +27,8 @@ public class HistogramComponent extends JComponent {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Start the cason game
+                String[] args = {};
+                Cason.main(args);
             }
         });
         button_daniel = new JButton("daniel");
