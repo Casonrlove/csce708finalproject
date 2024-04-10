@@ -20,14 +20,13 @@ import javax.swing.SwingUtilities;
 public class Cason extends JFrame {
     private String[] wordBank = {"mercury", "venus", "earth", "mars", "jupiter", "saturn", "uranus", "neptune"};
     private String selected_word;
-    private JLabel word_Label;
-    private JLabel hangman_IMG;
     private StringBuilder current_guess;
     private int incorrect_guess;
-    private JTextField letter_field;
-    private JButton guess_button;
+    private JLabel wordLabel;
+    private JLabel hangmanImageLabel;
+    private JTextField letterInputField;
+    private JButton guessButton;
 
-    /* MACROS */
     private static final int NUMBER_OF_INCORRECT_GUESSES = 6;
 
     /* HIGH LEVEL FUNC */
@@ -35,17 +34,17 @@ public class Cason extends JFrame {
     /*************************************************************/
     public Cason()
     {
-        setTitle("Cason's Space-Themed Hangman Game");
+        setTitle("Hangman");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(600, 600);
         initializeGame();
-        word_Label = new JLabel(getCurrentWordState());
-        hangman_IMG = new JLabel();
+        wordLabel = new JLabel(getCurrentWordState());
+        hangmanImageLabel = new JLabel();
         updateHangmanIMG();
 
-        letter_field = new JTextField(1);
-        guess_button = new JButton("Guess");
-        guess_button.addActionListener(new ActionListener()
+        letterInputField = new JTextField(1);
+        guessButton = new JButton("Guess");
+        guessButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
@@ -54,14 +53,14 @@ public class Cason extends JFrame {
             }
         });
         /* NEW LAYOUT */
-        setLayout(new GridLayout(2, 2));
-        add(word_Label);
-        add(hangman_IMG);
+        setLayout(new GridLayout(2, 1));
+        add(wordLabel);
+        add(hangmanImageLabel);
 
         JPanel inputPanel = new JPanel();
         inputPanel.add(new JLabel("Enter a letter: "));
-        inputPanel.add(letter_field);
-        inputPanel.add(guess_button);
+        inputPanel.add(letterInputField);
+        inputPanel.add(guessButton);
         add(inputPanel);
 
         /* SET VISIBLE */
@@ -90,13 +89,13 @@ public class Cason extends JFrame {
             Image image = ImageIO.read(new File(getHangmanIMGPath(incorrect_guess)));
 
             // Set the size of the JLabel to match the size of the image
-            hangman_IMG.setIcon(new ImageIcon(image));
-            hangman_IMG.setSize(new Dimension(image.getWidth(null), image.getHeight(null)));
-            hangman_IMG.setPreferredSize(new Dimension(image.getWidth(null), image.getHeight(null)));
+            hangmanImageLabel.setIcon(new ImageIcon(image));
+            hangmanImageLabel.setSize(new Dimension(image.getWidth(null), image.getHeight(null)));
+            hangmanImageLabel.setPreferredSize(new Dimension(image.getWidth(null), image.getHeight(null)));
 
             // Repaint the JLabel to reflect the changes
-            hangman_IMG.revalidate();
-            hangman_IMG.repaint();
+            hangmanImageLabel.revalidate();
+            hangmanImageLabel.repaint();
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -113,21 +112,21 @@ public class Cason extends JFrame {
         switch (incorrect_guess)
         {
             case 0:
-                return "0.jpg";
+                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman6.jpg";
             case 1:
-                return "1.jpg";
+                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
             case 2:
-                return "2.jpg";
+                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
             case 3:
-                return "3.jpg";
+                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
             case 4:
-                return "4.jpg";
+                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
             case 5:
-                return "5.jpg";
+                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
             case 6:
-                return "6.jpg";
+                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
             default:
-                return "6.jpg";
+                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman6.jpg";
         }
     }
     /*************************************************************/
@@ -140,7 +139,7 @@ public class Cason extends JFrame {
     /*************************************************************/
     private void processUserGuess()
     {
-        String input = letter_field.getText().toLowerCase();
+        String input = letterInputField.getText().toLowerCase();
 
         if (input.length() != 1 || !Character.isLetter(input.charAt(0)))
         {
@@ -161,8 +160,8 @@ public class Cason extends JFrame {
             endGame();
         }
 
-        word_Label.setText(getCurrentWordState());
-        letter_field.setText("");
+        wordLabel.setText(getCurrentWordState());
+        letterInputField.setText("");
     }
 
     private void updateCurrentGuess(char guessedLetter) {
@@ -192,8 +191,8 @@ public class Cason extends JFrame {
         }
 
         initializeGame();
-        word_Label.setText(getCurrentWordState());
-        letter_field.setText("");
+        wordLabel.setText(getCurrentWordState());
+        letterInputField.setText("");
         incorrect_guess = 0;
         updateHangmanIMG();
     }
@@ -209,6 +208,4 @@ public class Cason extends JFrame {
     {
         SwingUtilities.invokeLater(new Runnable(){@Override public void run(){ new Cason();}});
     }
-    /*************************************************************/
-    /*************************************************************/
 }

@@ -81,7 +81,7 @@ public class HistogramComponent extends JComponent {
         int height = (int) (this.getHeight() * 0.85);
         int x = (this.getWidth() - width) / 2;
         int y = (this.getHeight() - height) / 2;
-        // Color skyBlue = new Color(135, 206, 235);
+        // Color skyBlue = new Color(GRAY);
         graphicsObj.setColor(Color.GRAY);
         graphicsObj.fillRect(x, y, width, height);
 

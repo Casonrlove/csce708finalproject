@@ -1,8 +1,9 @@
 /*
  * CSCE 708 Final Project
 */
-import javax.swing.JFrame;
 import java.awt.Color; // Import statement for Color
+
+import javax.swing.JFrame;
 
 public class Viewer {
     public static void main(String[] args) {
