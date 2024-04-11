@@ -3,6 +3,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -36,10 +37,15 @@ public class Cason extends JFrame {
     {
         setTitle("Hangman");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(600, 600);
+        // setExtendedState(MAXIMIZED_BOTH);
+        setSize(600, 800);
         initializeGame();
         wordLabel = new JLabel(getCurrentWordState());
+        Font textFont = new Font("Arial", Font.BOLD, 20);
+        wordLabel.setFont(textFont);
         hangmanImageLabel = new JLabel();
+        // hangmanImageLabel.setBounds(EXIT_ON_CLOSE, ABORT, 1995, HEIGHT);
+
         updateHangmanIMG();
 
         letterInputField = new JTextField(1);
@@ -53,7 +59,7 @@ public class Cason extends JFrame {
             }
         });
         /* NEW LAYOUT */
-        setLayout(new GridLayout(2, 1));
+        setLayout(new GridLayout(3, 1));
         add(wordLabel);
         add(hangmanImageLabel);
 
@@ -90,6 +96,7 @@ public class Cason extends JFrame {
 
             // Set the size of the JLabel to match the size of the image
             hangmanImageLabel.setIcon(new ImageIcon(image));
+            // hangmanImageLabel.setPreferredSize(new Dimension(400, 400));
             hangmanImageLabel.setSize(new Dimension(image.getWidth(null), image.getHeight(null)));
             hangmanImageLabel.setPreferredSize(new Dimension(image.getWidth(null), image.getHeight(null)));
 
@@ -109,24 +116,26 @@ public class Cason extends JFrame {
     /* PATH FOR IMAGES */
     private String getHangmanIMGPath(int incorrect_guess)
     {
+        System.out.println("Incorrect Guess: " + incorrect_guess);
+        
         switch (incorrect_guess)
         {
             case 0:
-                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman6.jpg";
+                return "hangman0_Small.png";
             case 1:
-                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
+                return "hangman1_Small.png";
             case 2:
-                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
+                return "hangman2_Small.png";
             case 3:
-                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
+                return "hangman3_Small.png";
             case 4:
-                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
+                return "hangman4_Small.png";
             case 5:
-                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
+                return "hangman5_Small.png";
             case 6:
-                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman0.jpg";
+                return "hangman6_Small.png";
             default:
-                return "C:/Users/cason/OneDrive/Documents/GitHub/csce708finalproject/hangman6.jpg";
+                return "hangman0_Small.png";
         }
     }
     /*************************************************************/
