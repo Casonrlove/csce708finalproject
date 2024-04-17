@@ -58,6 +58,8 @@ public class HistogramComponent extends JComponent {
         button_prisha.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String[] args = {};
+                Cason.main(args);
                 // Start the prisha game
             }
         });
