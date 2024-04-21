@@ -23,15 +23,15 @@ public class SpaceFlimFlam extends JFrame {
     };
     
     private String[][] questionOptionsArray = {
-        {"93 million miles", "About six big football fields", "13 billion miles", "287 kilometers"}, 
+        {"93 million miles", "About six big football fields", "13 billion miles", "287 million kilometers"}, 
         {"Before the water starts to boil", "800 santillion years", "10^67 years", "Never"}, 
-        {"Demetrius", "Rebaron", "Quantasia", "Miranda"}, 
-        {"27 moons", "0 moons", "-1 moons", "2 moons"}, 
-        {"Twix", "Milky way(haha get it)", "Jolly ranchers", "Kitkat"},
-        {"Older than me, probably", "Like 16 years old or something idk", "12 billion years old", "375 million years old"}
+        {"Demetrius", "Earth", "Quantasia", "Miranda"}, 
+        {"2 moons", "0 moons", "-3 moons", "You are my sunshine.."}, 
+        {"Twix", "Milky way(haha)", "Jolly ranchers", "Kitkat"},
+        {"Older than you, probably", "Like 16 years old or something idk", "12 billion years old", "375 million years old"}
     };
 
-    private String[] answerArray = {"93 million miles", "10^67 years", "Miranda", "0 moons", "Twix", "Older than me, probably"};
+    private String[] answerArray = {"93 million miles", "10^67 years", "Miranda", "0 moons", "Twix", "Older than you, probably"};
     private int currentQuestionIndex = 0; //used to keep track of the current question
     private int score = 0; //used to track the score to print at the end of the game
 
@@ -116,6 +116,7 @@ public class SpaceFlimFlam extends JFrame {
     }
 
     public static void main(String[] args) {
+        JOptionPane.showMessageDialog(null, "Welcome to the SpaceFlimFlam! You will be tested on various space trivia. Best of luck, human!", "SpaceFlimFlam", 1); //prints the score for the quiz
         // Creates SpaceFlimFlam as well as the components needed for it.
         SpaceFlimFlam spaceFlimFlam = new SpaceFlimFlam();
 
