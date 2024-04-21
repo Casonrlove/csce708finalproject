@@ -45,6 +45,8 @@ public class HistogramComponent extends JComponent {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Start the emmanuel game
+                String[] args = {};
+                LeGui.main(args);
             }
         });
         button_jay = new JButton("jay");
