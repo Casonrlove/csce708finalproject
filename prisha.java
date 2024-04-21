@@ -4,24 +4,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
 
-public class prisha extends JFrame {
-    private List<Integer> scores = new ArrayList<>(Arrays.asList(new Integer[9])); // Initialize scores for nine planets
-    private List<JComboBox<String>> comboBoxes = new ArrayList<>();
+public class PersonalityPlanetGame extends JFrame {
+    // Initializes the scores and comboBoxes lists to manage the quiz data.
+    public List<Integer> scores = new ArrayList<>(Arrays.asList(new Integer[9])); // Initialize scores for nine planets
+    public List<JComboBox<String>> comboBoxes = new ArrayList<>();
 
     public PersonalityPlanetGame() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 400);
-        setTitle("Find Your Planet");
-        setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
-        getContentPane().setBackground(new Color(240, 240, 255)); // Light purple background for the frame
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensures the program exits when the window is closed.
+        setSize(800, 600); // Sets the size of the window.
+        setTitle("Find Your Planet"); // Sets the title of the window.
+        setLocationRelativeTo(null); // Centers the window on the screen.
+
+        setLayout(new BorderLayout()); // Sets the layout manager for the JFrame.
+        getContentPane().setBackground(new Color(240, 240, 255)); // Sets a light purple background for the frame.
+
+        
 
         JPanel questionPanel = new JPanel();
         questionPanel.setLayout(new BoxLayout(questionPanel, BoxLayout.Y_AXIS));
-        questionPanel.setBackground(new Color(230, 230, 250)); // Slightly darker purple background for the question panel
+        questionPanel.setBackground(new Color(230, 230, 250)); // Sets a slightly darker purple background for the question panel.
 
-        // Array of questions and options
+        // Array of questions, options, and image paths
         String[] questions = {
             "Choose your ideal vacation: Adventure in unknown territories, relaxation by the sea, or a historical tour?",
             "At a party, are you the quiet observer, the life of the party, or the planner?",
@@ -36,8 +43,15 @@ public class prisha extends JFrame {
             {"Lead", "Follow", "Alone"},
             {"Action", "Mystery", "Sci-Fi", "Fantasy", "Documentary"}
         };
+        String[] imagePaths = {
+            "pic1.JPG",  // Path to the image for the first question
+            "pic2.JPG",     // Path to the image for the second question
+            "pic3.JPG", // Path to the image for the third question
+            "pic4.JPG",// Path to the image for the fourth question
+            "pic5.JPG"     // Path to the image for the fifth question
+        };
 
-        // Create a combobox for each question
+        // Loops through each question to create UI elements - combobox and images.
         for (int i = 0; i < questions.length; i++) {
             JPanel panel = new JPanel();
             panel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -46,25 +60,31 @@ public class prisha extends JFrame {
             label.setForeground(new Color(50, 50, 80)); // Dark blue font color for labels
             JComboBox<String> comboBox = new JComboBox<>(options[i]);
             comboBoxes.add(comboBox);
+            // Load image
+            try {
+                Image image = ImageIO.read(new File(imagePaths[i]));
+                ImageIcon imageIcon = new ImageIcon(image);
+                JLabel imageLabel = new JLabel(new ImageIcon(imageIcon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+                panel.add(imageLabel);
+
+            } catch (IOException e) {
+                // Handles potential errors during image loading.
+                e.printStackTrace();
+            }
+
+
+            
             panel.add(label);
             panel.add(comboBox);
             questionPanel.add(panel);
         }
-
+        // Submit button configuration.
         JButton submitButton = new JButton("Submit");
         submitButton.addActionListener(e -> confirmSubmission());
-        submitButton.setBackground(new Color(100, 100, 255)); // Blue color for the button
-        submitButton.setForeground(Color.WHITE); // White text color
+        submitButton.setBackground(new Color(100, 100, 255)); // Sets the button color.
+        submitButton.setForeground(Color.BLACK); // Sets the button text color.
         submitButton.setFocusPainted(false);
         submitButton.setFont(new Font("Arial", Font.BOLD, 12));
-        submitButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                submitButton.setBackground(new Color(130, 130, 255)); // Lighter blue when hovered
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                submitButton.setBackground(new Color(100, 100, 255)); // Original blue when not hovered
-            }
-        });
 
         add(questionPanel, BorderLayout.CENTER);
         add(submitButton, BorderLayout.SOUTH);
@@ -75,19 +95,19 @@ public class prisha extends JFrame {
     private void confirmSubmission() {
         int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to submit your answers?", "Confirm Submission", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
-            processAnswers();
+            processAnswers(); // Processes answers if the user confirms.
         }
     }
 
     private void processAnswers() {
-        // Ensure scores are reset before calculating new scores
-        Collections.fill(scores, 0); // Reset scores to zero correctly
+        Collections.fill(scores, 0); // Resets scores before calculating.
 
         for (int i = 0; i < comboBoxes.size(); i++) {
             int selectedIndex = comboBoxes.get(i).getSelectedIndex();
             scores.set(selectedIndex, scores.get(selectedIndex) + 1);
         }
 
+        // Determines the planet with the highest score and displays the result.
         int maxIndex = scores.indexOf(Collections.max(scores));
         String[] planets = {"Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"};
         String[] descriptions = {
@@ -102,7 +122,6 @@ public class prisha extends JFrame {
             "Pluto: Perfect for those who embrace transformation and challenge."
         };
 
-        // Display the result in a popup
         JOptionPane.showMessageDialog(this,
             "<html>Your planet: " + planets[maxIndex] + "<br>" + descriptions[maxIndex] + "</html>",
             "Your Result",
@@ -110,6 +129,6 @@ public class prisha extends JFrame {
     }
 
     public static void main(String[] args) {
-        new PersonalityPlanetGame();
+        new PersonalityPlanetGame(); // Starts the application.
     }
 }
