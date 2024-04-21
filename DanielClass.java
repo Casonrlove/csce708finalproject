@@ -3,6 +3,8 @@
  * 827004197
  * CSCE 708 - 600
  * 4/11/2024
+ * 
+ * Screen Size must be big enough. If not, will not show drawing canvas.
  */
 
 // Layout Imports
@@ -43,7 +45,7 @@ public class DanielClass extends JPanel implements ActionListener, MouseListener
         
         DanielClass outpostBuilder = new DanielClass(); // Instantiate your Panel
 
-        appFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Set default close operation
+        appFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Set default close operation
         appFrame.setLocationRelativeTo(null); // Set default location to center of screen
         appFrame.setTitle("Outpost Builder"); // Updated title
         appFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); // Frame Full Screen

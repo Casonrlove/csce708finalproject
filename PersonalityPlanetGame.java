@@ -1,3 +1,7 @@
+/*
+ * Prisha
+ */
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,7 +18,7 @@ public class PersonalityPlanetGame extends JFrame {
     public List<JComboBox<String>> comboBoxes = new ArrayList<>();
 
     public PersonalityPlanetGame() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ensures the program exits when the window is closed.
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Ensures the program exits when the window is closed.
         setSize(800, 600); // Sets the size of the window.
         setTitle("Find Your Planet"); // Sets the title of the window.
         setLocationRelativeTo(null); // Centers the window on the screen.

@@ -119,7 +119,7 @@ public class SpaceFlimFlam extends JFrame {
         // Creates SpaceFlimFlam as well as the components needed for it.
         SpaceFlimFlam spaceFlimFlam = new SpaceFlimFlam();
 
-        spaceFlimFlam.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        spaceFlimFlam.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         spaceFlimFlam.setLocationRelativeTo(null);
         spaceFlimFlam.pack();
         spaceFlimFlam.setVisible(true);

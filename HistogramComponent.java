@@ -52,6 +52,8 @@ public class HistogramComponent extends JComponent {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Start the jay game
+                String[] args = {};
+                SpaceFlimFlam.main(args);
             }
         });
         button_prisha = new JButton("Prisha");
@@ -59,7 +61,7 @@ public class HistogramComponent extends JComponent {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String[] args = {};
-                Cason.main(args);
+                PersonalityPlanetGame.main(args);
                 // Start the prisha game
             }
         });
