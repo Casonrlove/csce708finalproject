@@ -164,7 +164,25 @@ class LeGui extends JFrame implements ActionListener{
         String[] defenseOptions = new String[]{"Block","Steal","Swat"};
         String defenseMenu = "1. Block\n2. Steal\n3. Swat";
         Random rand = new Random();
-
+        int x = 0;
+        if (e.getSource() == shootButton) {
+            x = 0;
+        }
+        else if (e.getSource() == passButton) {
+            x = 1;
+        }
+        else if (e.getSource() == layupButton) {
+            x = 2;
+        }
+        else if (e.getSource() == blockButton) {
+            x = 0;
+        }
+        else if (e.getSource() == stealButton) {
+            x = 1;
+        }
+        else if (e.getSource() == swatButton) {
+            x = 2;
+        }
         if (count == 0) {
             if (e.getSource() == shootButton) {
                 y = 1;
@@ -236,6 +254,8 @@ class LeGui extends JFrame implements ActionListener{
                             break;
                         case 1: // pass
                         textArea2.append("\nYou passed the ball to your teammate.");
+                        textArea2.append("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                        textArea2.append("\n" + user.getName() + ", it's your turn on offense! Pick a move:\n" + offenseMenu);
                             break;                   
                         case 2: // layup
                             textArea2.append("\nNice! You went for a layup and got 2 points!");
